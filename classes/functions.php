@@ -39,10 +39,10 @@ function sendmail($emailto, $emailtoname, $emailfrom, $emailfromname, $emailsubj
 		'password' => $password));
 	$mail = $smtp->send($to, $headers, $body);
 	if (PEAR::isError($mail)) {
-		//echo("<p>" . $mail->getMessage() . "</p>");
+		echo("<p>" . $mail->getMessage() . "</p>");
 		return 0;
 	} else {
-	//echo("<p>Message successfully sent!</p>");
+	echo("<p>Message successfully sent!</p>");
 		return 1;
 	}
 
