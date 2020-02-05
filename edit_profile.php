@@ -7,6 +7,25 @@ include ("classes/Session.class.php");
 $sitesession = new Session();
 $sitesession->Session();
 
+$link = mysqli_connect("127.0.0.1", "root", "", "sbn_db");
+
+if (!$link) {
+    echo "Error: Unable to connect to MySQL." . PHP_EOL;
+    exit;
+} /*echo "done done london...";*/
+
+$qr_last_name = "SELECT LastName FROM members WHERE Mobile=".$_SESSION['SESSIONMOBILE']."";
+if ($result = $link->query($qr_last_name)) {
+  while ($row = $result->fetch_row()) {
+        $memberLastName = $row[0];
+  }
+  /*echo "$memberLastName";*/
+  $result->free_result();
+}
+
+$link->close();
+        /*echo "connection close bhai...";*/
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -25,7 +44,11 @@ $sitesession->Session();
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBnzedToDdeq9Ax0F2DyjmUsxyG0GdeLF0&libraries=places&callback=initAutocomplete"
         async defer></script>
 
+        <!-- ajax and jquery library -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
 <script type="text/javascript">
+
 var placeSearch, autocomplete;
 var locationString;
 
@@ -41,46 +64,119 @@ var componentForm = {
 function submitBTNClicked(){
 
   validationCheck();
-  uploadImage();
+  console.log("validation are fulfilled...");
+  storingRecordInDB();
+
+  alert("Your record has been saved.");
 
 }//submitBTNClickedEnds
 
-function uploadImage(){
+function storingRecordInDB(){
+
+  console.log("storing record...");
+
+  var first_name = document.getElementById("firstName");
+  var last_name = document.getElementById("lastName");
+  var mobile = document.getElementById("mobileNumber");
+  var email_id = document.getElementById("email");
+  var location_detail = document.getElementById("autocomplete");
+  var city = document.getElementById("locality");
+  var state = document.getElementById("administrative_area_level_1"); //
+  var country_code = document.getElementById("country");  //
+  
+  var file_upload_field = document.getElementById("fileToUpload");
+  var strFileUpload = file_upload_field.value + "";
+  var strFileUploadArr = strFileUpload.split("\\");
+  var path = "/profilepics/" + strFileUploadArr[2];
+
+  var occupation_detail = document.getElementById("occupation");
+  var headline_detail = document.getElementById("headline");
+
+/*  console.log(first_name.value + last_name.value + mobile.value + email_id.value + location_detail.value +
+    city.value + state.value + country_code.value + path + occupation_detail.value + headline_detail.value
+    );*/
+
+  var dataItems = "firstName="+first_name.value+"&lastName="+last_name.value+
+    "&mobileNumber="+mobile.value+"&email="+email_id.value+"&autocomplete="+location_detail.value+
+    "&locality="+city.value+"&administrative_area_level_1="+state.value+"&country="+country_code.value+
+    "&fileToUpload="+path+"&occupation="+occupation_detail.value+"&headline="+headline_detail.value;
+
+    console.log(dataItems);
+
+    storingRecordInDBAJAX(dataItems);
+
+}// storingRecordInDB
+
+function storingRecordInDBAJAX(dataItems){
+
+  console.log("go ahead...");
+  console.log(dataItems);
 
   $(document).ready(function() {
-    $('inputfile').change(function(){
-        var file_data = $('inputfile').prop('files')[0];   
-        var form_data = new FormData();                  
-        form_data.append('file', file_data);
-        $.ajax({
-            url: "imageUploadPHP.php",
-            type: "POST",
-            data: form_data,
-            contentType: false,
-            cache: false,
-            processData:false,
-            success: function(data){
-                console.log("Worked!!!");
-            }
-        });
-    });
+    console.log("document ready...");
+    $.ajax({
+    type: "POST",
+    url: "savingRecord.php",
+    data: dataItems,
+      success: function(data) {
+        console.log("success");
+      },
+      error: function(){
+        console.log("work harder...");
+      }
+  });
 });
 
-}//uploadImageEnds
+}//storingRecordInDBAJAXEnds
 
 function validationCheck(){
 
   console.log("in validationCheck");
+
   validateOccupation();
-  validateHeadline();
+  //validateHeadline();
+  validateEmail();
+  validateLocation();
+  validateFileToUpload();
 
 }//validationCheckEnds
+
+function validateFileToUpload(){
+  var file_upload_button = document.getElementById("fileToUpload");
+  if(file_upload_button.value == ""){
+    alert("Please select your profile picture");
+  } else {
+    // alert(document.getElementById("uploadForm"));
+    document.getElementById("submit").click();
+    console.log("submit button click thyu bhai...");
+  }
+}
+
+
+
+function validateLocation(){
+  var locationTextBox = document.getElementById("autocomplete");
+  if(locationTextBox.value == ""){
+    alert("Please enter your location");
+  }
+}
+
+function validateEmail(){
+
+  var emailTextBox = document.getElementById("email");
+    if(!emailTextBox.value.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/)){
+      alert("Please enter valid email address");
+    }
+
+}//validateEmail
 
 function validateHeadline(){
 
   var headlineTextBox = document.getElementById("headline");
     if (headlineTextBox.value == "") {
     alert("Please give yourself a headline");
+  } else if (!headlineTextBox.value.match(/^[A-Za-z]+$/)) {
+    alert("Please enter only characters for headlines");
   }
 
 }//validateHeadline
@@ -98,7 +194,9 @@ function fillStateCityCountry() {
 
   locationString = document.getElementById('autocomplete').value;
 
-  var locationArr = locationString.split(',');
+  var locationArr = locationString.split(',').map(function(item){
+   return item.trim(); 
+  });
   var lastIndex = locationArr.length - 1;
   var country = locationArr[lastIndex];
   var state = locationArr[lastIndex-1];
@@ -165,6 +263,29 @@ function geolocate() {
   }
 }//geolocateEnds
 </script>
+<script type="text/javascript">
+
+  $(document).ready(function (e){
+  $("#uploadForm").on('submit',(function(e){
+    console.log("image mate button submit click thyu...");
+    e.preventDefault();
+    $.ajax({
+    url: "upload.php",
+    type: "POST",
+    data:  new FormData(this),
+    contentType: false,
+    cache: false,
+    processData:false,
+    success: function(data){
+      $("#targetLayer").html(data);
+      console.log("image uploaded...");
+    },
+    error: function(){console.log("work harder...");}           
+    });
+  }));
+});
+  
+</script>
 
   <body>
     <? include("includes/header.php"); ?>
@@ -195,18 +316,18 @@ function geolocate() {
                     <tr>
                       <th scope="col" align="left"><label>First Name</label></th>
                       <th scope="col">
-                        <input type="text" name="fistName" id="fistName" class="form-control" placeholder="Enter your first name" value="" required>
+                        <input type="text" name="fistName" id="firstName" class="form-control" placeholder="Enter your first name" value="<?=$_SESSION['SESSIONNAME']?>" required>
                       </th>
                       <th scope="col"></th>
                     </tr>
                     <tr>
                       <th scope="col"><label>Last Name</label></th>
-                      <th scope="col"><input type="text" name="lastName" id="lastName" class="form-control" placeholder="Enter your last name" value="" required></th>
+                      <th scope="col"><input type="text" name="lastName" id="lastName" class="form-control" placeholder="Enter your last name" value="<? echo $memberLastName ?>" required></th>
                       <th scope="col"></th>
                     </tr>
                     <tr>
                       <th scope="col"><label>Mobile</label></th>
-                      <th scope="col"><input type="text" name="mobileNumber" id="mobileNumber" class="form-control" placeholder="Enter your moblie number" minlength="10" maxlength="10" value="" required></th>
+                      <th scope="col"><input type="text" name="mobileNumber" id="mobileNumber" class="form-control" placeholder="Enter your moblie number" minlength="10" maxlength="10" value="<?=$_SESSION['SESSIONMOBILE']?>" required></th>
                       <th scope="col"><label for="verified">Verified</label></th>
                     </tr>
                     <tr>
@@ -237,12 +358,17 @@ function geolocate() {
                     <tr>
                       <th scope="col">Profile Pic</th>
                       <th scope="col">
-                        <!-- <form action="imageUpload.php" method="post" enctype="multipart/form-data"> -->
-                          <input type="file" name="inputfile" id="inputfile">
-                        <!-- </form> -->
+
+                        <form action="upload.php"  id="uploadForm" method="post" enctype="multipart/form-data">
+                        <input type="file" name="fileToUpload" id="fileToUpload">
+                        <input type="submit" style="visibility:hidden;" id="submit" class="btn btn-primary" value="Upload Image" name="submit">
+                        <!-- <input type="file" name="inputfile" id="inputfile"> -->
+                        
                       </th>
-                      <th scope="col"><!-- <input class="btn btn-primary" type="submit" value="Upload Image" name="submit"> --></th>
-                      <!-- style="display:none;" -->
+                      <th scope="col">
+                        <div id="targetLayer">
+                        </div>
+                      </th>
                     </tr>
                     <tr>
                       <th scope="col" style="border-bottom: 1px solid  #a1b5c0;"></th>
@@ -277,7 +403,7 @@ function geolocate() {
                     </tr>
                     <tr>
                       <th scope="col"><label>Headline</label></th>
-                      <th scope="col"><input type="text" name="headline" id="headline" class="form-control" placeholder="Enter your title : i.e - Software Developer" value="" required></th>
+                      <th scope="col"><input type="text" name="headline" id="headline" class="form-control" placeholder="Enter your title : i.e - Software Developer" value="" required=""></th>
                       <th scope="col"></th>
                     </tr>
                     <tr>
@@ -293,13 +419,14 @@ function geolocate() {
                   </thead>
                   </table>
 
-                <a href="#" class="btn btn-primary" onclick="submitBTNClicked()">Submit</a>
+                <a href="#" class="btn btn-primary" onclick="submitBTNClicked()">Submit Form</a>
               </div>
               </div>
 
           <div class="media-body pd-y-30 pd-lg-x-50 pd-xl-x-60 align-items-center d-none d-lg-flex pos-relative">
             <div class="mx-lg-wd-500 mx-xl-wd-550">
               <img src="assets/img/img16.png" class="img-fluid" alt="">
+              <!-- <img src="assets/img/sbn_logo.jpg" class="img-fluid" alt=""> -->
             </div>
            
           </div><!-- media-body -->
