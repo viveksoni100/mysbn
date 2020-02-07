@@ -68,6 +68,8 @@ function submitBTNClicked(){
   storingRecordInDB();
 
   alert("Your record has been saved.");
+    
+    window.location.href="http://localhost/mysbn/dashboard.php?SuccessID=";
 
 }//submitBTNClickedEnds
 
@@ -112,7 +114,7 @@ function storingRecordInDBAJAX(dataItems){
   console.log("go ahead...");
   console.log(dataItems);
 
-  $(document).ready(function() {
+$(document).ready(function() {
     console.log("document ready...");
     $.ajax({
     type: "POST",
@@ -425,7 +427,6 @@ function geolocate() {
 
           <div class="media-body pd-y-30 pd-lg-x-50 pd-xl-x-60 align-items-center d-none d-lg-flex pos-relative">
             <div class="mx-lg-wd-500 mx-xl-wd-550">
-              <img src="assets/img/img16.png" class="img-fluid" alt="">
               <!-- <img src="assets/img/sbn_logo.jpg" class="img-fluid" alt=""> -->
             </div>
            
