@@ -1,4 +1,4 @@
-
+<!--sudo chmod -R 777 /opt/lampp/htdocs/mysbn-->
 <?php
 $target_dir = "profilepics/";
 $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
