@@ -89,7 +89,7 @@ function storingRecordInDB(){
   var file_upload_field = document.getElementById("fileToUpload");
   var strFileUpload = file_upload_field.value + "";
   var strFileUploadArr = strFileUpload.split("\\");
-  var path = "/profilepics/" + strFileUploadArr[2];
+  var path = "profilepics/" + strFileUploadArr[2];
 
   var occupation_detail = document.getElementById("occupation");
   var headline_detail = document.getElementById("headline");

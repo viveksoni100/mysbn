@@ -8,6 +8,25 @@ include ("classes/Session.class.php");
 $sitesession = new Session();
 $sitesession->Session();
 ?>
+<?
+$conn = mysqli_connect("127.0.0.1", "root", "", "sbn_db");
+if(!$conn){
+//    echo "work harder...";
+}
+//    echo "go ahead...";
+//    echo "<script> console.log('PHP: ',",get_option("slides_data"),");</script>";
+$query_for_fetching_profile_picture_path = "SELECT Profile_picture_path FROM `members` WHERE Mobile='8866128862'";
+
+if ($result = $conn -> query($query_for_fetching_profile_picture_path)) {
+  $profile_pic_path = $result -> fetch_assoc();
+    $image = array_pop($profile_pic_path);
+  // Free result set
+  $result -> free_result();
+}
+
+$conn -> close();
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,14 +49,13 @@ $sitesession->Session();
           <div class="profile-sidebar pd-lg-r-25">
             <div class="row">
               <div class="col-sm-3 col-md-2 col-lg">
-                <div class="avatar avatar-xxl avatar-online"><img src="assets/img/img16.jpg" class="rounded-circle" alt=""></div>
+                <div class="avatar avatar-xxl avatar-online"><img src="<? echo $image ?>" class="rounded-circle" alt=""></div>
               </div><!-- col -->
               <div class="col-sm-8 col-md-7 col-lg mg-t-20 mg-sm-t-0 mg-lg-t-25">
                 <h5 class="mg-b-2 tx-spacing--1">Fen Chiu Mao</h5>
                 <p class="tx-color-03 mg-b-25">@fenchiumao</p>
                 <div class="d-flex mg-b-25">
-                  <button class="btn btn-xs btn-white flex-fill">Message</button>
-                  <button class="btn btn-xs btn-primary flex-fill mg-l-10">Follow</button>
+                  <button onClick="document.location.href='edit_profile.php'" class="btn btn-xs btn-primary flex-fill mg-l-10">Edit Profile</button>
                 </div>
 
                 <p class="tx-13 tx-color-02 mg-b-25">Redhead, Innovator, Saviour of Mankind, Hopeless Romantic, Attractive 20-something Yogurt Enthusiast... <a href="#">Read more</a></p>

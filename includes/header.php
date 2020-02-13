@@ -1,4 +1,24 @@
- <header class="navbar navbar-header navbar-header-fixed">
+<?
+$conn = mysqli_connect("127.0.0.1", "root", "", "sbn_db");
+if(!$conn){
+//    echo "work harder...";
+}
+//    echo "go ahead...";
+//    echo "<script> console.log('PHP: ',",get_option("slides_data"),");</script>";
+$query_for_fetching_profile_picture_path = "SELECT Profile_picture_path FROM `members` WHERE Mobile=".$_SESSION['SESSIONMOBILE']."";
+
+if ($result = $conn -> query($query_for_fetching_profile_picture_path)) {
+  $profile_pic_path = $result -> fetch_assoc();
+    $image = array_pop($profile_pic_path);
+  // Free result set
+  $result -> free_result();
+}
+
+$conn -> close();
+
+?>
+
+<header class="navbar navbar-header navbar-header-fixed">
   <a href="#" id="mainMenuOpen" class="burger-menu"><i data-feather="menu"></i></a>
   <div class="navbar-brand">
     <a href="signup.php" class="df-logo">SBN</a>
@@ -49,10 +69,11 @@
 
     <div class="dropdown dropdown-profile">
           <a href="#" class="dropdown-link" data-toggle="dropdown" data-display="static" aria-expanded="false">
-            <div class="avatar avatar-sm"><img src="assets/img/img1.png" class="rounded-circle" alt=""></div>
+            <div class="avatar avatar-sm"><img src="<? echo $image; ?>" class="rounded-circle" alt=""></div>
           </a><!-- dropdown-link -->
           <div class="dropdown-menu dropdown-menu-right tx-13">
-            <div class="avatar avatar-lg mg-b-15"><img src="assets/img/img1.png" class="rounded-circle" alt=""></div>
+            <!--<div class="avatar avatar-lg mg-b-15"><img src="assets/img/img1.png" class="rounded-circle" alt=""></div>-->
+              <div class="avatar avatar-lg mg-b-15"><img src="<? echo $image; ?>" class="rounded-circle" alt=""></div>
             <h6 class="tx-semibold mg-b-5"><?=$_SESSION['SESSIONNAME']?></h6>
 
             <a href="edit_profile.php" class="dropdown-item"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit-3"><polygon points="14 2 18 6 7 17 3 17 3 13 14 2"></polygon><line x1="3" y1="22" x2="21" y2="22"></line></svg> Edit Profile</a>
