@@ -7,26 +7,30 @@ include ("classes/functions.php");
 include ("classes/Session.class.php");
 $sitesession = new Session();
 $sitesession->Session();
-?>
-<?
+
+/*fetching profile picture path*/
 $conn = mysqli_connect("127.0.0.1", "root", "", "sbn_db");
-if(!$conn){
-//    echo "work harder...";
+
+$query_user_all_data = "SELECT * FROM `members` WHERE Mobile=".$_SESSION['SESSIONMOBILE']."";
+
+if ($res = $conn->query($query_user_all_data)) {
+     while ($user_data_row = $res->fetch_assoc())  
+        { 
+         $FirstName = $user_data_row['FirstName'];
+         $LastName = $user_data_row['LastName'];
+         $Mobile = $user_data_row['Mobile'];
+         $Email = $user_data_row['Email'];
+         $Location = $user_data_row['Location'];
+         $City = $user_data_row['City'];
+         $State = $user_data_row['State'];
+         $Country = $user_data_row['Country'];
+         $Profile_picture_path = $user_data_row['Profile_picture_path'];
+         $Occupation = $user_data_row['Occupation'];
+         $Headline = $user_data_row['Headline'];
+     }
 }
-//    echo "go ahead...";
-//    echo "<script> console.log('PHP: ',",get_option("slides_data"),");</script>";
-$query_for_fetching_profile_picture_path = "SELECT Profile_picture_path FROM `members` WHERE Mobile='8866128862'";
+?> <!--PHPEnds-->
 
-if ($result = $conn -> query($query_for_fetching_profile_picture_path)) {
-  $profile_pic_path = $result -> fetch_assoc();
-    $image = array_pop($profile_pic_path);
-  // Free result set
-  $result -> free_result();
-}
-
-$conn -> close();
-
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -49,7 +53,7 @@ $conn -> close();
           <div class="profile-sidebar pd-lg-r-25">
             <div class="row">
               <div class="col-sm-3 col-md-2 col-lg">
-                <div class="avatar avatar-xxl avatar-online"><img src="<? echo $image ?>" class="rounded-circle" alt=""></div>
+                <div class="avatar avatar-xxl avatar-online"><img src="<? echo $Profile_picture_path ?>" class="rounded-circle" alt=""></div>
               </div><!-- col -->
               <div class="col-sm-8 col-md-7 col-lg mg-t-20 mg-sm-t-0 mg-lg-t-25">
                 <h5 class="mg-b-2 tx-spacing--1">Fen Chiu Mao</h5>

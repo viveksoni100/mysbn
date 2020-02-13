@@ -23,10 +23,27 @@ if ($result = $link->query($qr_last_name)) {
   $result->free_result();
 }
 
-$link->close();
-        /*echo "connection close bhai...";*/
+/*user data fetch*/
+$query_user_all_data = "SELECT * FROM `members` WHERE Mobile=".$_SESSION['SESSIONMOBILE']."";
 
-?>
+if ($res = $link->query($query_user_all_data)) {
+     while ($user_data_row = $res->fetch_assoc())  
+        { 
+         $FirstName = $user_data_row['FirstName'];
+         $LastName = $user_data_row['LastName'];
+         $Mobile = $user_data_row['Mobile'];
+         $Email = $user_data_row['Email'];
+         $Location = $user_data_row['Location'];
+         $City = $user_data_row['City'];
+         $State = $user_data_row['State'];
+         $Country = $user_data_row['Country'];
+         $Profile_picture_path = $user_data_row['Profile_picture_path'];
+         $Occupation = $user_data_row['Occupation'];
+         $Headline = $user_data_row['Headline'];
+     }
+}
+$link->close();
+?> <!--PHPEnds-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -318,43 +335,43 @@ function geolocate() {
                     <tr>
                       <th scope="col" align="left"><label>First Name</label></th>
                       <th scope="col">
-                        <input type="text" name="fistName" id="firstName" class="form-control" placeholder="Enter your first name" value="<?=$_SESSION['SESSIONNAME']?>" required>
+                        <input type="text" name="fistName" id="firstName" class="form-control" placeholder="Enter your first name" value="<? echo $FirstName ?>" required>
                       </th>
                       <th scope="col"></th>
                     </tr>
                     <tr>
                       <th scope="col"><label>Last Name</label></th>
-                      <th scope="col"><input type="text" name="lastName" id="lastName" class="form-control" placeholder="Enter your last name" value="<? echo $memberLastName ?>" required></th>
+                      <th scope="col"><input type="text" name="lastName" id="lastName" class="form-control" placeholder="Enter your last name" value="<? echo $LastName ?>" required></th>
                       <th scope="col"></th>
                     </tr>
                     <tr>
                       <th scope="col"><label>Mobile</label></th>
-                      <th scope="col"><input type="text" name="mobileNumber" id="mobileNumber" class="form-control" placeholder="Enter your moblie number" minlength="10" maxlength="10" value="<?=$_SESSION['SESSIONMOBILE']?>" required></th>
+                      <th scope="col"><input type="text" name="mobileNumber" id="mobileNumber" class="form-control" placeholder="Enter your moblie number" minlength="10" maxlength="10" value="<? echo $Mobile ?>" required></th>
                       <th scope="col"><label for="verified">Verified</label></th>
                     </tr>
                     <tr>
                       <th scope="col"><label>Email</label></th>
-                      <th scope="col"><input type="text" name="email" id="email" class="form-control" placeholder="Enter your Email address" value="" required></th>
+                      <th scope="col"><input type="text" name="email" id="email" class="form-control" placeholder="Enter your Email address" value="<? echo $Email ?>" required></th>
                       <th scope="col"><label for="forVerification">Click to Verify</label></th>
                     </tr>
                     <tr>
                       <th scope="col"><label>Location</label></th>
-                      <th scope="col"><input type="text" name="autocomplete" id="autocomplete" class="form-control" placeholder="Location" onFocus="geolocate()" onfocusout="fillStateCityCountry()" required></th>
+                      <th scope="col"><input type="text" name="autocomplete" id="autocomplete" class="form-control" placeholder="Location" onFocus="geolocate()" onfocusout="fillStateCityCountry()" value="<? echo $Location ?>" required></th>
                       <th scope="col"></th>
                     </tr>
                     <tr>
                       <th scope="col"><label>City</label></th>
-                      <th scope="col"><input name="locality" id="locality" class="form-control" placeholder="City" disabled="true"></th>
+                      <th scope="col"><input name="locality" id="locality" class="form-control" placeholder="City" disabled="true" value="<? echo $City ?>"></th>
                       <th scope="col"></th>
                     </tr>
                     <tr>
                       <th scope="col"><label>State</label></th>
-                      <th scope="col"><input name="administrative_area_level_1" id="administrative_area_level_1" class="form-control" placeholder="State" disabled="true"></th>
+                      <th scope="col"><input name="administrative_area_level_1" id="administrative_area_level_1" class="form-control" placeholder="State" disabled="true" value="<? echo $State ?>"></th>
                       <th scope="col"></th>
                     </tr>
                     <tr>
                       <th scope="col"><label>Country</label></th>
-                      <th scope="col"><input name="country" id="country" class="form-control" placeholder="Country" disabled="true"></th>
+                      <th scope="col"><input name="country" id="country" class="form-control" placeholder="Country" disabled="true" value="<? echo $Country ?>"></th>
                       <th scope="col"></th>
                     </tr>
                     <tr>
@@ -362,7 +379,7 @@ function geolocate() {
                       <th scope="col">
 
                         <form action="upload.php"  id="uploadForm" method="post" enctype="multipart/form-data">
-                        <input type="file" name="fileToUpload" id="fileToUpload">
+                        <input type="file" name="fileToUpload" id="fileToUpload" value="<? echo $Profile_picture_path ?>">
                         <input type="submit" style="visibility:hidden;" id="submit" class="btn btn-primary" value="Upload Image" name="submit">
                         <!-- <input type="file" name="inputfile" id="inputfile"> -->
                         
@@ -405,7 +422,7 @@ function geolocate() {
                     </tr>
                     <tr>
                       <th scope="col"><label>Headline</label></th>
-                      <th scope="col"><input type="text" name="headline" id="headline" class="form-control" placeholder="Enter your title : i.e - Software Developer" value="" required=""></th>
+                      <th scope="col"><input type="text" name="headline" id="headline" class="form-control" placeholder="Enter your title : i.e - Software Developer" required="" value="<? echo $Headline ?>"></th>
                       <th scope="col"></th>
                     </tr>
                     <tr>
