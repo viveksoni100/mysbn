@@ -56,8 +56,8 @@ if ($res = $conn->query($query_user_all_data)) {
                 <div class="avatar avatar-xxl avatar-online"><img src="<? echo $Profile_picture_path ?>" class="rounded-circle" alt=""></div>
               </div><!-- col -->
               <div class="col-sm-8 col-md-7 col-lg mg-t-20 mg-sm-t-0 mg-lg-t-25">
-                <h5 class="mg-b-2 tx-spacing--1">Fen Chiu Mao</h5>
-                <p class="tx-color-03 mg-b-25">@fenchiumao</p>
+                <h5 class="mg-b-2 tx-spacing--1"><? echo $FirstName . " " . $LastName ?></h5>
+                <p class="tx-color-03 mg-b-25"><? echo $Email ?></p>
                 <div class="d-flex mg-b-25">
                   <button onClick="document.location.href='edit_profile.php'" class="btn btn-xs btn-primary flex-fill mg-l-10">Edit Profile</button>
                 </div>
