@@ -85,15 +85,15 @@ var componentForm = {
 
 function submitBTNClicked(){
     
-    console.log("good work, Vivek");
+    /*console.log("good work, Vivek");*/
 
-  /*validationCheck();
+  validationCheck();
   console.log("validation are fulfilled...");
   storingRecordInDB();
 
   alert("Your record has been saved.");
     
-    window.location.href="http://localhost/mysbn/dashboard.php?SuccessID=";*/
+    window.location.href="http://localhost/mysbn/dashboard.php?SuccessID=";
 
 }//submitBTNClickedEnds
 
@@ -319,161 +319,6 @@ function geolocate() {
       <div class="container">
         <div class="media align-items-stretch justify-content-center ht-100p">
               
-              <!--<div class="card text-center">
-              <div class="card-header">
-                <ul class="nav nav-tabs card-header-tabs" id="myTab" role="tablist">
-                  <li class="nav-item">
-                    <a class="nav-link active" id="pi-tab" data-toggle="tab" role="tab" aria-controls="pi" aria-selected="true" href="#">Personal Info</a>
-                  </li>
-                  <li class="nav-item">
-                     <a class="nav-link" id="ci-tab" data-toggle="tab" role="tab" aria-controls="ci" aria-selected="true" href="#">Company Info</a> 
-                  </li>
-                    <li class="nav-item">
-                     <a class="nav-link" id="si-tab" data-toggle="tab" role="tab" aria-controls="si" aria-selected="true" href="#">Social Info</a> 
-                  </li>
-                </ul>
-              </div>
-                <div class="tab-content" id="myTabContent">
-                    <table class="table">
-                    <div class="tab-pane fade show active" id="pi" role="tabpanel" aria-labelledby="pi-tab">
-                      <thead>
-                        <tr>
-                          <th scope="col" align="left"><label>First Name</label></th>
-                          <th scope="col">
-                            <input type="text" name="fistName" id="firstName" class="form-control" placeholder="Enter your first name" value="<? echo $FirstName ?>" required>
-                          </th>
-                          <th scope="col"></th>
-                        </tr>
-                        <tr>
-                          <th scope="col"><label>Last Name</label></th>
-                          <th scope="col"><input type="text" name="lastName" id="lastName" class="form-control" placeholder="Enter your last name" value="<? echo $LastName ?>" required></th>
-                          <th scope="col"></th>
-                        </tr>
-                        <tr>
-                          <th scope="col"><label>Mobile</label></th>
-                          <th scope="col"><input type="text" name="mobileNumber" id="mobileNumber" class="form-control" placeholder="Enter your moblie number" minlength="10" maxlength="10" value="<? echo $Mobile ?>" required></th>
-                          <th scope="col"><label for="verified">Verified</label></th>
-                        </tr>
-                        <tr>
-                          <th scope="col"><label>Email</label></th>
-                          <th scope="col"><input type="text" name="email" id="email" class="form-control" placeholder="Enter your Email address" value="<? echo $Email ?>" required></th>
-                          <th scope="col"><label for="forVerification">Click to Verify</label></th>
-                        </tr>
-                        <tr>
-                          <th scope="col"><label>Location</label></th>
-                          <th scope="col"><input type="text" name="autocomplete" id="autocomplete" class="form-control" placeholder="Location" onFocus="geolocate()" onfocusout="fillStateCityCountry()" value="<? echo $Location ?>" required></th>
-                          <th scope="col"></th>
-                        </tr>
-                        <tr>
-                          <th scope="col"><label>City</label></th>
-                          <th scope="col"><input name="locality" id="locality" class="form-control" placeholder="City" disabled="true" value="<? echo $City ?>"></th>
-                          <th scope="col"></th>
-                        </tr>
-                        <tr>
-                          <th scope="col"><label>State</label></th>
-                          <th scope="col"><input name="administrative_area_level_1" id="administrative_area_level_1" class="form-control" placeholder="State" disabled="true" value="<? echo $State ?>"></th>
-                          <th scope="col"></th>
-                        </tr>
-                        <tr>
-                          <th scope="col"><label>Country</label></th>
-                          <th scope="col"><input name="country" id="country" class="form-control" placeholder="Country" disabled="true" value="<? echo $Country ?>"></th>
-                          <th scope="col"></th>
-                        </tr>
-                        <tr>
-                          <th scope="col">Profile Pic</th>
-                          <th scope="col">
-
-                            <form action="upload.php"  id="uploadForm" method="post" enctype="multipart/form-data">
-                            <input type="file" name="fileToUpload" id="fileToUpload" value="<? echo $Profile_picture_path ?>">
-                            <input type="submit" style="visibility:hidden;" id="submit" class="btn btn-primary" value="Upload Image" name="submit">
-                          </th>
-                          <th scope="col">
-                            <div id="targetLayer">
-                            </div>
-                          </th>
-                        </tr>
-                        <tr>
-                          <th scope="col" style="border-bottom: 1px solid  #a1b5c0;"></th>
-                          <th scope="col" style="border-bottom: 1px solid  #a1b5c0;"></th>
-                          <th scope="col" style="border-bottom: 1px solid  #a1b5c0;"></th>
-                        </tr>
-                        <tr>
-                          <th scope="col"></th>
-                          <th scope="col"></th>
-                          <th scope="col"></th>
-                        </tr>
-                        <tr>
-                          <th scope="col">Occupation</th>
-                          <th scope="col"> <select name="occupation" id="occupation" style="width: 350px">
-                                              <option value="empty"></option>
-                                              <option value="BusinessOwner">Business Owner</option>
-                                              <option value="Employee">Employee</option>
-                                              <option value="Freelancer">Freelancer</option>
-                                              <option value="Other">Other</option>
-                          </select> </th>
-                          <th scope="col"></th>
-                        </tr>
-                        <tr>
-                          <th scope="col" style="border-bottom: 1px solid  #a1b5c0;"></th>
-                          <th scope="col" style="border-bottom: 1px solid  #a1b5c0;"></th>
-                          <th scope="col" style="border-bottom: 1px solid  #a1b5c0;"></th>
-                        </tr>
-                        <tr>
-                          <th scope="col"></th>
-                          <th scope="col"></th>
-                          <th scope="col"></th>
-                        </tr>
-                        <tr>
-                          <th scope="col"><label>Headline</label></th>
-                          <th scope="col"><input type="text" name="headline" id="headline" class="form-control" placeholder="Enter your title : i.e - Software Developer" required="" value="<? echo $Headline ?>"></th>
-                          <th scope="col"></th>
-                        </tr>
-                        <tr>
-                          <th scope="col" style="border-bottom: 1px solid  #a1b5c0;"></th>
-                          <th scope="col" style="border-bottom: 1px solid  #a1b5c0;"></th>
-                          <th scope="col" style="border-bottom: 1px solid  #a1b5c0;"></th>
-                        </tr>
-                        <tr>
-                          <th scope="col"><img src="assets/icons/facebook.png" height="38" width="38"></th>
-                          <th scope="col"><input type="text" name="facebook" id="facebook" class="form-control" placeholder="Enter your facebook id/url"></th>
-                          <th scope="col"></th>
-                        </tr>
-                        <tr>
-                          <th scope="col"><img src="assets/icons/twitter.png" height="38" width="38"></th>
-                          <th scope="col"><input type="text" name="twitter" id="twitter" class="form-control" placeholder="Enter your twitter id/url"></th>
-                          <th scope="col"></th>
-                        </tr>
-                        <tr>
-                          <th scope="col"><img src="assets/icons/linkedin.png" height="38" width="38"></th>
-                          <th scope="col"><input type="text" name="twitter" id="linkedin" class="form-control" placeholder="Enter your linkedin id/url"></th>
-                          <th scope="col"></th>
-                        </tr>
-                        <tr>
-                          <th scope="col"><img src="assets/icons/whatsapp.png" height="38" width="38"></th>
-                          <th scope="col"><input type="text" name="twitter" id="whatsapp" class="form-control" placeholder="Enter your whatsapp id/url"></th>
-                          <th scope="col"></th>
-                        </tr>
-                        <tr>
-                          <th scope="col"><img src="assets/icons/instagram.png" height="38" width="38"></th>
-                          <th scope="col"><input type="text" name="twitter" id="instagram" class="form-control" placeholder="Enter your instagram id/url"></th>
-                          <th scope="col"></th>
-                        </tr>
-                        <tr>
-                          <th scope="col"><img src="assets/icons/youtube.png" height="38" width="38"></th>
-                          <th scope="col"><input type="text" name="twitter" id="youtube" class="form-control" placeholder="Enter your youtube id/url"></th>
-                          <th scope="col"></th>
-                        </tr>
-                      </thead>
-                      
-                    </div>
-                    <div class="tab-pane fade" id="ci" role="tabpanel" aria-labelledby="ci-tab">go ahead...</div>
-                    <div class="tab-pane fade" id="si" role="tabpanel" aria-labelledby="si-tab">go ahead...</div>
-                    </table>
-
-                    <a href="#" class="btn btn-primary" onclick="submitBTNClicked()">Submit Form</a><br><br>
-                </div>
-              </div>-->
-           
 <div class="card text-center">
     <div class="card-header">
     <nav>
@@ -487,6 +332,24 @@ function geolocate() {
     
       <div class="tab-pane fade show active" id="nav-pi" role="tabpanel" aria-labelledby="nav-pi-tab">
           <table class="table"><br><br>
+        <tr>
+            <th scope="col"><label style="padding: 65px 0px 0px 0px;">Profile Pic</label></th>
+          <th scope="col">
+
+            <form action="upload.php"  id="uploadForm" method="post" enctype="multipart/form-data">
+                
+                <div style="text-align: center;">
+                  <img src="<? echo $Profile_picture_path?>" height="150px" width="150px" class="rounded" alt="..."><br><br><br>
+                <input type="file" name="fileToUpload" id="fileToUpload" value="<? echo $Profile_picture_path ?>">
+                </div>
+                
+            <input type="submit" style="visibility:hidden;" id="submit" class="btn btn-primary" value="Upload Image" name="submit">
+          </th>
+          <th scope="col">
+            <div id="targetLayer">
+            </div>
+          </th>
+        </tr>
         <tr>
           <th scope="col" align="left"><label>First Name</label></th>
           <th scope="col">
@@ -528,19 +391,6 @@ function geolocate() {
           <th scope="col"><label>Country</label></th>
           <th scope="col"><input name="country" id="country" class="form-control" placeholder="Country" disabled="true" value="<? echo $Country ?>"></th>
           <th scope="col"></th>
-        </tr>
-        <tr>
-            <th scope="col"><label>Profile Pic</label></th>
-          <th scope="col">
-
-            <form action="upload.php"  id="uploadForm" method="post" enctype="multipart/form-data">
-            <input type="file" name="fileToUpload" id="fileToUpload" value="<? echo $Profile_picture_path ?>">
-            <input type="submit" style="visibility:hidden;" id="submit" class="btn btn-primary" value="Upload Image" name="submit">
-          </th>
-          <th scope="col">
-            <div id="targetLayer">
-            </div>
-          </th>
         </tr>
         <tr>
           <th scope="col" style="border-bottom: 1px solid  #a1b5c0;"></th>
@@ -626,19 +476,16 @@ function geolocate() {
           <th scope="col" style="border-bottom: 1px solid  #a1b5c0;"></th>
         </tr>
         </table>
+          <a href="#" class="btn btn-primary" onclick="submitBTNClicked()">Submit Form</a>
         </div>
     
-
-        <a href="#" class="btn btn-primary" onclick="submitBTNClicked()">Submit Form</a>
     </div>
     </nav>
     </div>
 </div>
 
-          <div class="media-body pd-y-30 pd-lg-x-50 pd-xl-x-60 align-items-center d-none d-lg-flex pos-relative">
-            <div class="mx-lg-wd-500 mx-xl-wd-550">
+          <div class="media-body pd-y-30 pd-lg-x-50 pd-xl-x-60 align-items-center d-none d-lg-flex">
               <!-- <img src="assets/img/sbn_logo.jpg" class="img-fluid" alt=""> -->
-            </div>
            
           </div><!-- media-body -->
         </div><!-- media -->
