@@ -441,32 +441,32 @@ function geolocate() {
       <div class="tab-pane fade" id="nav-si" role="tabpanel" aria-labelledby="nav-si-tab">
           <table class="table"><br><br>
         <tr>
-          <th scope="col"><img src="assets/icons/facebook.png" height="38" width="38"></th>
+          <th scope="col"><img src="assets/icons/facebook.png" height="30px" width="30px"></th>
           <th scope="col"><input type="text" name="facebook" id="facebook" class="form-control" placeholder="Enter your facebook id/url"></th>
           <th scope="col"></th>
         </tr>
         <tr>
-          <th scope="col"><img src="assets/icons/twitter.png" height="38" width="38"></th>
+          <th scope="col"><img src="assets/icons/twitter.png" height="30px" width="30px"></th>
           <th scope="col"><input type="text" name="twitter" id="twitter" class="form-control" placeholder="Enter your twitter id/url"></th>
           <th scope="col"></th>
         </tr>
         <tr>
-          <th scope="col"><img src="assets/icons/linkedin.png" height="38" width="38"></th>
+          <th scope="col"><img src="assets/icons/linkedin.png" height="30px" width="30px"></th>
           <th scope="col"><input type="text" name="twitter" id="linkedin" class="form-control" placeholder="Enter your linkedin id/url"></th>
           <th scope="col"></th>
         </tr>
         <tr>
-          <th scope="col"><img src="assets/icons/whatsapp.png" height="38" width="38"></th>
+          <th scope="col"><img src="assets/icons/whatsapp.png" height="30px" width="30px"></th>
           <th scope="col"><input type="text" name="twitter" id="whatsapp" class="form-control" placeholder="Enter your whatsapp id/url"></th>
           <th scope="col"></th>
         </tr>
         <tr>
-          <th scope="col"><img src="assets/icons/instagram.png" height="38" width="38"></th>
+          <th scope="col"><img src="assets/icons/instagram.png" height="30px" width="30px"></th>
           <th scope="col"><input type="text" name="twitter" id="instagram" class="form-control" placeholder="Enter your instagram id/url"></th>
           <th scope="col"></th>
         </tr>
         <tr>
-          <th scope="col"><img src="assets/icons/youtube.png" height="38" width="38"></th>
+          <th scope="col"><img src="assets/icons/youtube.png" height="30px" width="30px"></th>
           <th scope="col"><input type="text" name="twitter" id="youtube" class="form-control" placeholder="Enter your youtube id/url"></th>
           <th scope="col"></th>
         </tr>
@@ -484,10 +484,9 @@ function geolocate() {
     </div>
 </div>
 
-          <div class="media-body pd-y-30 pd-lg-x-50 pd-xl-x-60 align-items-center d-none d-lg-flex">
+          <!--<div class="media-body pd-y-30 pd-lg-x-50 pd-xl-x-60 align-items-center d-none d-lg-flex">-->
               <!-- <img src="assets/img/sbn_logo.jpg" class="img-fluid" alt=""> -->
-           
-          </div><!-- media-body -->
+          <!--</div>--><!-- media-body -->
         </div><!-- media -->
       </div><!-- container -->
     </div><!-- content -->
