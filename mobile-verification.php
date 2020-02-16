@@ -50,7 +50,7 @@ if ($_POST['btnsubmit']) {
         if (!$db->query($sql)) {
           $Error_Message = "Sorry, we are experiencing technical issues, try again later.";
         }else {
-          ?><script>location.href="dashboard.php";</script><?php
+          ?><script>location.href="mobile-verified.php";</script><?php
         }
       }
     }

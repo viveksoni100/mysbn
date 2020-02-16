@@ -13,9 +13,15 @@ $conn = mysqli_connect("127.0.0.1", "root", "", "sbn_db");
  $Profile_picture_path=$_POST['fileToUpload'];
  $Occupation=$_POST['occupation'];
  $Headline=$_POST['headline'];
+ $Facebook=$_POST['facebook'];
+ $Twitter=$_POST['twitter'];
+ $LinkedIn=$_POST['linkedin'];
+ $WhatsApp=$_POST['whatsapp'];
+ $Instagram=$_POST['instagram'];
+ $Youtube=$_POST['youtube'];
 
 //WORKING
-$sql = "UPDATE `members` SET `FirstName`='$FirstName',`LastName`='$LastName',`Mobile`='$Mobile',`Email`='$Email',`Location`='$Location',`State`='$State',`City`='$City',`Country`='$Country',`Profile_picture_path`='$Profile_picture_path',`Occupation`='$Occupation',`Headline`='$Headline' WHERE `Mobile`='$Mobile'";
+$sql = "UPDATE `members` SET `FirstName`='$FirstName',`LastName`='$LastName',`Mobile`='$Mobile',`Email`='$Email',`Location`='$Location',`State`='$State',`City`='$City',`Country`='$Country',`Profile_picture_path`='$Profile_picture_path',`Occupation`='$Occupation',`Headline`='$Headline',`facebook`='$Facebook',`twitter`='$Twitter',`linkedin`='$LinkedIn',`whatsapp`='$WhatsApp',`instagram`='$Instagram',`youtube`='$Youtube' WHERE `Mobile`='$Mobile'";
 
 if ($conn->query($sql) === TRUE) {
     echo "Worked";
