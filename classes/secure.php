@@ -1,4 +1,4 @@
-<?
+<?php
 	if ($_SESSION['SESSIONMOBILE']=="") { 
 
 		$domain = $_SERVER['HTTP_HOST'];
