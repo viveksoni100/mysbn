@@ -40,6 +40,12 @@ if ($res = $link->query($query_user_all_data)) {
          $Profile_picture_path = $user_data_row['Profile_picture_path'];
          $Occupation = $user_data_row['Occupation'];
          $Headline = $user_data_row['Headline'];
+         $Facebook = $user_data_row['facebook'];
+         $Twitter = $user_data_row['twitter'];
+         $LinkedIn = $user_data_row['linkedin'];
+         $WhatsApp = $user_data_row['whatsapp'];
+         $Instagram = $user_data_row['instagram'];
+         $Youtube = $user_data_row['youtube'];
      }
 }
 $link->close();
@@ -118,6 +124,13 @@ function storingRecordInDB(){
   var occupation_detail = document.getElementById("occupation");
   var headline_detail = document.getElementById("headline");
 
+  var facebook_id = document.getElementById("facebook");
+  var twitter_id = document.getElementById("twitter");
+  var linkedin_id = document.getElementById("linkedin");
+  var whatsapp_id = document.getElementById("whatsapp");
+  var instagram_id = document.getElementById("instagram");
+  var youtube_id = document.getElementById("youtube");
+
 /*  console.log(first_name.value + last_name.value + mobile.value + email_id.value + location_detail.value +
     city.value + state.value + country_code.value + path + occupation_detail.value + headline_detail.value
     );*/
@@ -125,7 +138,7 @@ function storingRecordInDB(){
   var dataItems = "firstName="+first_name.value+"&lastName="+last_name.value+
     "&mobileNumber="+mobile.value+"&email="+email_id.value+"&autocomplete="+location_detail.value+
     "&locality="+city.value+"&administrative_area_level_1="+state.value+"&country="+country_code.value+
-    "&fileToUpload="+path+"&occupation="+occupation_detail.value+"&headline="+headline_detail.value;
+    "&fileToUpload="+path+"&occupation="+occupation_detail.value+"&headline="+headline_detail.value+"&facebook="+facebook_id.value+"&twitter="+twitter_id.value+"&whatsapp="+whatsapp_id.value+"&instagram="+instagram_id.value+"&youtube="+youtube_id.value+"&linkedin="+linkedin_id.value;
 
     console.log(dataItems);
 
@@ -339,7 +352,7 @@ function geolocate() {
             <form action="upload.php"  id="uploadForm" method="post" enctype="multipart/form-data">
                 
                 <div style="text-align: center;">
-                  <img src="<? echo $Profile_picture_path?>" height="150px" width="150px" class="rounded" alt="..."><br><br><br>
+                  <img src="<? echo $Profile_picture_path ?>" height="150px" width="150px" class="rounded-circle" alt="workharder"><br><br><br>
                 <input type="file" name="fileToUpload" id="fileToUpload" value="<? echo $Profile_picture_path ?>">
                 </div>
                 
@@ -442,32 +455,32 @@ function geolocate() {
           <table class="table"><br><br>
         <tr>
           <th scope="col"><img src="assets/icons/facebook.png" height="30px" width="30px"></th>
-          <th scope="col"><input type="text" name="facebook" id="facebook" class="form-control" placeholder="Enter your facebook id/url"></th>
+          <th scope="col"><input value="<? echo $Facebook ?>" type="text" name="facebook" id="facebook" class="form-control" placeholder="Enter your facebook id/url"></th>
           <th scope="col"></th>
         </tr>
         <tr>
           <th scope="col"><img src="assets/icons/twitter.png" height="30px" width="30px"></th>
-          <th scope="col"><input type="text" name="twitter" id="twitter" class="form-control" placeholder="Enter your twitter id/url"></th>
+          <th scope="col"><input value="<? echo $Twitter ?>" type="text" name="twitter" id="twitter" class="form-control" placeholder="Enter your twitter id/url"></th>
           <th scope="col"></th>
         </tr>
         <tr>
           <th scope="col"><img src="assets/icons/linkedin.png" height="30px" width="30px"></th>
-          <th scope="col"><input type="text" name="twitter" id="linkedin" class="form-control" placeholder="Enter your linkedin id/url"></th>
+          <th scope="col"><input value="<? echo $LinkedIn ?>" type="text" name="twitter" id="linkedin" class="form-control" placeholder="Enter your linkedin id/url"></th>
           <th scope="col"></th>
         </tr>
         <tr>
           <th scope="col"><img src="assets/icons/whatsapp.png" height="30px" width="30px"></th>
-          <th scope="col"><input type="text" name="twitter" id="whatsapp" class="form-control" placeholder="Enter your whatsapp id/url"></th>
+          <th scope="col"><input value="<? echo $WhatsApp ?>" type="text" name="twitter" id="whatsapp" class="form-control" placeholder="Enter your whatsapp id/url"></th>
           <th scope="col"></th>
         </tr>
         <tr>
           <th scope="col"><img src="assets/icons/instagram.png" height="30px" width="30px"></th>
-          <th scope="col"><input type="text" name="twitter" id="instagram" class="form-control" placeholder="Enter your instagram id/url"></th>
+          <th scope="col"><input value="<? echo $Instagram ?>" type="text" name="twitter" id="instagram" class="form-control" placeholder="Enter your instagram id/url"></th>
           <th scope="col"></th>
         </tr>
         <tr>
           <th scope="col"><img src="assets/icons/youtube.png" height="30px" width="30px"></th>
-          <th scope="col"><input type="text" name="twitter" id="youtube" class="form-control" placeholder="Enter your youtube id/url"></th>
+          <th scope="col"><input value="<? echo $Youtube ?>" type="text" name="twitter" id="youtube" class="form-control" placeholder="Enter your youtube id/url"></th>
           <th scope="col"></th>
         </tr>
         <tr>
