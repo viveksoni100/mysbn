@@ -1,4 +1,4 @@
-<?
+<?php
 function createThumbs( $image, $thumbpath, $thumbsize ) {
 	if ($image=="") return "Image Missing";
 	if ($thumbpath=="") $thumbpath="thumb/";

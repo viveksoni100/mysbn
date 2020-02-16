@@ -1,4 +1,4 @@
-<?
+<?php
 include ("classes/initial.php");
 include ("classes/config.inc.php");
 include ("classes/secure.php");
@@ -40,12 +40,12 @@ if ($res = $conn->query($query_user_all_data)) {
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <title>Dashboard</title>
-    <? include("includes/style.php"); ?>
+    <?php include("includes/style.php"); ?>
     
   </head>
   <body class="page-profile">
 
-  <? include("includes/header.php"); ?>
+  <?php include("includes/header.php"); ?>
 
     <div class="content content-fixed content-profile">
       <div class="container pd-x-0 pd-lg-x-10 pd-xl-x-0">
@@ -491,8 +491,8 @@ if ($res = $conn->query($query_user_all_data)) {
       </div><!-- container -->
     </div><!-- content -->
 
-    <? include("includes/footer.php"); ?>
-    <? include("includes/footer-js.php"); ?>    
+    <?php include("includes/footer.php"); ?>
+    <?php include("includes/footer-js.php"); ?>    
 
     <script>
       $(function(){

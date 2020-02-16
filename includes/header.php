@@ -1,4 +1,4 @@
-<?
+<?php
 $conn = mysqli_connect("127.0.0.1", "root", "", "sbn_db");
 if(!$conn){
 //    echo "work harder...";
@@ -29,7 +29,7 @@ $conn -> close();
       <a id="mainMenuClose" href="#"><i data-feather="x"></i></a>
     </div><!-- navbar-menu-header -->
 
-    <? if ($_SESSION['SESSIONMOBILE']!="") { ?>
+    <?php if ($_SESSION['SESSIONMOBILE']!="") { ?>
 
       <ul class="nav navbar-menu">
           <li class="nav-label pd-l-20 pd-lg-l-25 d-lg-none">Main Navigation</li>
@@ -57,14 +57,14 @@ $conn -> close();
   </div><!-- navbar-menu-wrapper -->
   <div class="navbar-right">
 
-  <? if ($_SESSION['SESSIONMOBILE']=="") { ?>
+  <?php if ($_SESSION['SESSIONMOBILE']=="") { ?>
 
     <div class="d-flex">
       <a href="signup.php" class="btn btn-xs btn-white flex-fill">Sign Up</a>
       <a href="signin.php" class="btn btn-xs btn-primary flex-fill mg-l-10">Sign In</a>
     </div>
 
-  <? } else { ?>
+  <?php } else { ?>
 
 
     <div class="dropdown dropdown-profile">
@@ -85,7 +85,7 @@ $conn -> close();
           </div><!-- dropdown-menu -->
         </div>
 
-  <? } ?>
+  <?php } ?>
 
   </div><!-- navbar-right -->
 </header><!-- navbar -->

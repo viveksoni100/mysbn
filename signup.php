@@ -1,4 +1,4 @@
-<?
+<?php
 include ("classes/initial.php");
 include ("classes/config.inc.php");
 include ("classes/Database.class.php");
@@ -68,7 +68,6 @@ if ($_POST['btnsubmit']) {
     }
 }
 
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -78,10 +77,10 @@ if ($_POST['btnsubmit']) {
     <meta property="og:description" content="Create your SBN Account for Free!">
     <meta name="description" content="Create your SBN Account for Free!">
     <title>(SBN) Satsang Business Network : Sign Up</title>
-    <? include("includes/style.php"); ?>
+    <?php include("includes/style.php"); ?>
   </head>
   <body>
-    <? include("includes/header.php"); ?>
+    <?php include("includes/header.php"); ?>
     <div class="content content-fixed content-auth">
       <div class="container">
         <div class="media align-items-stretch justify-content-center ht-100p">
@@ -90,9 +89,9 @@ if ($_POST['btnsubmit']) {
               <h4 class="tx-color-01 mg-b-5">Create your SBN Account.</h4>
               <p class="tx-color-03 tx-16 mg-b-40">It's free to signup and only takes a minute.</p>
 
-              <? if ($Error_Message!="") { ?>
+              <?php if ($Error_Message!="") { ?>
                 <div class="alert alert-danger" role="alert"><?=$Error_Message?></div>
-              <?} ?>
+              <?php } ?>
                 <form name="sbnform" id="sbnform" action="<?=$_SERVER['PHP_SELF']?>" method="post">
               <div class="form-group">
                 <label>Mobile Number *</label>
@@ -134,8 +133,8 @@ if ($_POST['btnsubmit']) {
       </div><!-- container -->
     </div><!-- content -->
 
-    <? include("includes/footer.php"); ?>
-    <? include("includes/footer-js.php"); ?>    
+    <?php include("includes/footer.php"); ?>
+    <?php include("includes/footer-js.php"); ?>    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
     <script>        
         $(document).ready(function() {

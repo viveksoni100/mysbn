@@ -1,4 +1,4 @@
-<?
+<?php
 $types = array("jpeg"=>IMG_JPG, "jpg"=>IMG_JPG, "gif"=>IMG_GIF, "png"=>IMG_PNG );
 function getImageType($name)
 {

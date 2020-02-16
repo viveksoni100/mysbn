@@ -1,4 +1,4 @@
-<?
+<?php
 function to_ddmmyyyy($performdate){
 	list($y, $d, $m) = explode('-', $performdate);
 	$performdatex = $d . "/" . $m . "/" . $y;

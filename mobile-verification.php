@@ -1,4 +1,4 @@
-<?
+<?php
 
 include ("classes/initial.php");
 include ("classes/config.inc.php");
@@ -13,11 +13,11 @@ if ($SuccessID=="") die("Invalid Request");
 
 $chkrsq = $db->query("select MemberId,Mobile,MobileVerificationCode,MobileVerificationStatus from members where MemberId='".$db->escape($SuccessID)."'");
 if (mysql_num_rows($chkrsq)==0) {
-  ?><script>location.href="signup";</script><?
-}else {
+  ?><script>location.href="signup";</script><?php
+} else {
   $chkrs = mysql_fetch_assoc($chkrsq);
   if ($chkrs['MobileVerificationStatus']==1) {
-    ?><script>location.href="signin";</script><?
+    ?><script>location.href="signin";</script><?php
   }
 }
 
@@ -50,7 +50,7 @@ if ($_POST['btnsubmit']) {
         if (!$db->query($sql)) {
           $Error_Message = "Sorry, we are experiencing technical issues, try again later.";
         }else {
-          ?><script>location.href="dashboard.php";</script><?
+          ?><script>location.href="dashboard.php";</script><?php
         }
       }
     }
@@ -66,10 +66,10 @@ if ($_POST['btnsubmit']) {
     <meta property="og:description" content="Create your SBN Account for Free!">
     <meta name="description" content="Create your SBN Account for Free!">
     <title>Verify your mobile : (SBN) Satsang Business Network</title>
-    <? include("includes/style.php"); ?>
+    <?php include("includes/style.php"); ?>
   </head>
   <body>
-    <? include("includes/header.php"); ?>
+    <?php include("includes/header.php"); ?>
     <div class="content content-fixed content-auth">
       <div class="container">
         <div class="media align-items-stretch justify-content-center ht-100p">
@@ -79,9 +79,9 @@ if ($_POST['btnsubmit']) {
               <hr>
               <p class="tx-color-03 tx-16 mg-b-40 text-center">We have sent 4 digit code by sms to your mobile number.</p>
 
-              <? if ($Error_Message!="") { ?>
+              <?php if ($Error_Message!="") { ?>
                 <div class="alert alert-danger" role="alert"><?=$Error_Message?></div>
-              <?} ?>
+              <?php } ?>
                 <form name="sbnform" id="sbnform" action="<?=$_SERVER['PHP_SELF']?>?SuccessID=<?=$SuccessID?>" method="post">
               <div class="form-group">
                 <label class="text-center">Enter 4 digit code *</label>
@@ -106,8 +106,8 @@ if ($_POST['btnsubmit']) {
       </div><!-- container -->
     </div><!-- content -->
 
-    <? include("includes/footer.php"); ?>
-    <? include("includes/footer-js.php"); ?>    
+    <?php include("includes/footer.php"); ?>
+    <?php include("includes/footer-js.php"); ?>    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
     <script>        
         $(document).ready(function() {

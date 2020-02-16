@@ -1,4 +1,4 @@
-<?
+<?php
 error_reporting(1);
 date_default_timezone_set('Asia/Kolkata');
 define('DB_SERVER',"localhost");

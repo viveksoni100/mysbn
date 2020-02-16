@@ -1,4 +1,4 @@
-<?
+<?php
 include ("classes/initial.php");
 include ("classes/config.inc.php");
 include ("classes/Database.class.php");
@@ -57,7 +57,7 @@ $link->close();
     <meta property="og:description" content="Create your SBN Account for Free!">
     <meta name="description" content="Create your SBN Account for Free!">
     <title>Edit your profile : SBN</title>
-    <? include("includes/style.php"); ?>
+    <?php include("includes/style.php"); ?>
   </head>
   <!-- fiddle try -->
   <!-- jsfiddle apikey : AIzaSyCkUOdZ5y7hMm0yrcCQoCvLwzdM6M8s5qk -->
@@ -314,7 +314,7 @@ function geolocate() {
 </script>
 
   <body>
-    <? include("includes/header.php"); ?>
+    <?php include("includes/header.php"); ?>
     <div class="content content-fixed content-auth">
       <div class="container">
         <div class="media align-items-stretch justify-content-center ht-100p">
@@ -491,8 +491,8 @@ function geolocate() {
       </div><!-- container -->
     </div><!-- content -->
 
-    <? include("includes/footer.php"); ?>
-    <? include("includes/footer-js.php"); ?>    
+    <?php include("includes/footer.php"); ?>
+    <?php include("includes/footer-js.php"); ?>    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
     <script>        
         $(document).ready(function() {
