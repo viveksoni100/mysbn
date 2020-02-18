@@ -93,15 +93,22 @@ function submitBTNClicked(){
     
     /*console.log("good work, Vivek");*/
 
-  validationCheck();
-  console.log("validation are fulfilled...");
-  storingRecordInDB();
-
-  alert("Your record has been saved.");
+    validationCheck();
+    console.log("validation are fulfilled...");
+    storingRecordInDB();
+    console.log("Your record has been saved.");
+    showSuccessAlert();
     
-    window.location.href="http://localhost/mysbn/dashboard.php?SuccessID=";
+    /*window.location.href="http://localhost/mysbn/dashboard.php?SuccessID=";*/
 
 }//submitBTNClickedEnds
+    
+function showSuccessAlert(){
+  if($("#myAlert").find("div#myAlert2").length==0){
+    $("#myAlert").append();
+  }
+  $("#myAlert").css("display", "");
+}
 
 function storingRecordInDB(){
 
@@ -173,7 +180,6 @@ function validationCheck(){
   console.log("in validationCheck");
 
   validateOccupation();
-  //validateHeadline();
   validateEmail();
   validateLocation();
   validateFileToUpload();
@@ -333,6 +339,14 @@ function geolocate() {
         <div class="media align-items-stretch justify-content-center ht-100p">
               
 <div class="card text-center">
+    
+     <div style="display:none;" id="myAlert">
+        <div class="alert alert-success" role="alert" id="myAlert2">
+            Success! your details have been saved
+        </div>
+
+    </div>
+    
     <div class="card-header">
     <nav>
       <div class="nav nav-tabs" id="nav-tab" role="tablist">
