@@ -27,8 +27,8 @@ if ($result = $link->query($qr_last_name)) {
 $query_user_all_data = "SELECT * FROM `members` WHERE Mobile=".$_SESSION['SESSIONMOBILE']."";
 
 if ($res = $link->query($query_user_all_data)) {
-     while ($user_data_row = $res->fetch_assoc())  
-        { 
+     while ($user_data_row = $res->fetch_assoc())
+        {
          $FirstName = $user_data_row['FirstName'];
          $LastName = $user_data_row['LastName'];
          $Mobile = $user_data_row['Mobile'];
@@ -90,7 +90,7 @@ var componentForm = {
 };
 
 function submitBTNClicked(){
-    
+
     /*console.log("good work, Vivek");*/
 
     validationCheck();
@@ -98,19 +98,19 @@ function submitBTNClicked(){
     storingRecordInDB();
     console.log("Your record has been saved.");
     showSuccessAlert();
-    hideSuccessAlert();
-    
+    //hideSuccessAlert();
+
     /*window.location.href="http://localhost/mysbn/dashboard.php?SuccessID=";*/
 
 }//submitBTNClickedEnds
-    
+
 function showSuccessAlert(){
     $('#myAlert').fadeIn();
 }//showSucessAlertEnds
-    
+
 function hideSuccessAlert(){
     console.log("in hide mode");
-    $(function () { 
+    $(function () {
         var duration = 2000; // 4 seconds
         setTimeout(function () { $('#myAlert').fadeOut(); }, duration);
     });
@@ -128,7 +128,7 @@ function storingRecordInDB(){
   var city = document.getElementById("locality");
   var state = document.getElementById("administrative_area_level_1"); //
   var country_code = document.getElementById("country");  //
-  
+
   var file_upload_field = document.getElementById("fileToUpload");
   var strFileUpload = file_upload_field.value + "";
   var strFileUploadArr = strFileUpload.split("\\");
@@ -246,13 +246,13 @@ function fillStateCityCountry() {
   locationString = document.getElementById('autocomplete').value;
 
   var locationArr = locationString.split(',').map(function(item){
-   return item.trim(); 
+   return item.trim();
   });
   var lastIndex = locationArr.length - 1;
   var country = locationArr[lastIndex];
   var state = locationArr[lastIndex-1];
   var city = locationArr[lastIndex-2];
-  
+
   document.getElementById('locality').value = city;
   document.getElementById('administrative_area_level_1').value = state;
   document.getElementById('country').value = country;
@@ -331,11 +331,11 @@ function geolocate() {
       $("#targetLayer").html(data);
       console.log("image uploaded...");
     },
-    error: function(){console.log("work harder...");}           
+    error: function(){console.log("work harder...");}
     });
   }));
 });
-  
+
 </script>
 
   <body>
@@ -343,15 +343,15 @@ function geolocate() {
     <div class="content content-fixed content-auth">
       <div class="container">
         <div class="media align-items-stretch justify-content-center ht-100p">
-              
+
 <div class="card text-center">
-    
+
      <div style="display:none;" id="myAlert">
         <div class="alert alert-success" role="alert" id="myAlert2">
             Success! your details have been saved
         </div>
     </div>
-    
+
     <div class="card-header">
     <nav>
       <div class="nav nav-tabs" id="nav-tab" role="tablist">
@@ -361,7 +361,7 @@ function geolocate() {
       </div>
 
     <div class="tab-content" id="nav-tabContent">
-    
+
       <div class="tab-pane fade show active" id="nav-pi" role="tabpanel" aria-labelledby="nav-pi-tab">
           <table class="table"><br><br>
         <tr>
@@ -369,12 +369,12 @@ function geolocate() {
           <th scope="col">
 
             <form action="upload.php"  id="uploadForm" method="post" enctype="multipart/form-data">
-                
+
                 <div style="text-align: center;">
                   <img src="<? echo $Profile_picture_path ?>" height="150px" width="150px" class="rounded-circle" alt="workharder"><br><br><br>
                 <input type="file" name="fileToUpload" id="fileToUpload" value="<? echo $Profile_picture_path ?>">
                 </div>
-                
+
             <input type="submit" style="visibility:hidden;" id="submit" class="btn btn-primary" value="Upload Image" name="submit">
           </th>
           <th scope="col">
@@ -397,14 +397,13 @@ function geolocate() {
         <tr>
           <th scope="col"><label>Mobile</label></th>
           <th scope="col"><input type="text" name="mobileNumber" id="mobileNumber" class="form-control" placeholder="Enter your moblie number" minlength="10" maxlength="10" value="<? echo $Mobile ?>" required></th>
-          <th scope="col"><label for="verified" style="color: #5cb85c
+          <th scope="col"><label for="verified" style="color: #155724;;
 ">Verified</label></th>
         </tr>
         <tr>
           <th scope="col"><label>Email</label></th>
           <th scope="col"><input type="text" name="email" id="email" class="form-control" placeholder="Enter your Email address" value="<? echo $Email ?>" required></th>
-          <th scope="col"><label for="forVerification" style="color: #d9534f
-">Click to Verify</label></th>
+          <th scope="col"><label for="forVerification"><a href="#" style="color: #721c24">Click to Verify</label></a></th>
         </tr>
         <tr>
           <th scope="col"><label>Location</label></th>
@@ -438,8 +437,8 @@ function geolocate() {
         </tr>
         </table>
         </div>
-    
-    
+
+
       <div class="tab-pane fade" id="nav-ci" role="tabpanel" aria-labelledby="nav-ci-tab">
           <table class="table"><br><br>
         <tr>
@@ -469,8 +468,8 @@ function geolocate() {
         </tr>
         </table>
         </div>
-    
-    
+
+
       <div class="tab-pane fade" id="nav-si" role="tabpanel" aria-labelledby="nav-si-tab">
           <table class="table"><br><br>
         <tr>
@@ -511,7 +510,7 @@ function geolocate() {
         </table>
           <a href="#" class="btn btn-primary" onclick="submitBTNClicked()">Submit Form</a>
         </div>
-    
+
     </div>
     </nav>
     </div>
@@ -525,9 +524,9 @@ function geolocate() {
     </div><!-- content -->
 
     <?php include("includes/footer.php"); ?>
-    <?php include("includes/footer-js.php"); ?>    
+    <?php include("includes/footer-js.php"); ?>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
-    <script>        
+    <script>
         $(document).ready(function() {
             $("#sbnform").validate({
                 rules: {
@@ -537,7 +536,7 @@ function geolocate() {
                     }
                 }
             });
-        });      
-    </script>    
+        });
+    </script>
   </body>
 </html>

@@ -9,7 +9,7 @@ $sitesession = new Session();
 $sitesession->Session();
 
 if ($_POST['btnsubmit']) {
-  
+
     $Error=0;
     $Mobile = trim($_POST['Mobile']);
     $Password = trim($_POST['Password']);
@@ -45,7 +45,7 @@ if ($_POST['btnsubmit']) {
         $MobileVerificationCode=rand(1000,9999);
 
           $hashed_password = password_hash($Password, PASSWORD_DEFAULT);
-          
+
         $sql = "insert into members set ";
         $sql .= "Mobile='".$db->escape($Mobile)."', ";
         $sql .= "MobileVerificationCode='".$db->escape($MobileVerificationCode)."', ";
@@ -56,9 +56,9 @@ if ($_POST['btnsubmit']) {
         $sql .= "CreatedOn='".TODAY."', ";
         $sql .= "UpdatedOn='".TODAY."'";
 
-        $TextMessage = $MobileVerificationCode . " is your verification code for mysbn.org.";       
-        sendsms($Mobile,$TextMessage);     
-        
+        $TextMessage = $MobileVerificationCode . " is your verification code for mysbn.org.";
+        sendsms($Mobile,$TextMessage);
+
         if (!$db->query($sql)) {
           $Error_Message = "Sorry, we are experiencing technical issues, try again later.";
         }else {
@@ -129,16 +129,16 @@ if ($_POST['btnsubmit']) {
             <div class="mx-lg-wd-500 mx-xl-wd-550">
               <img src="assets/img/img16.png" class="img-fluid" alt="">
             </div>
-           
+
           </div><!-- media-body -->
         </div><!-- media -->
       </div><!-- container -->
     </div><!-- content -->
 
     <?php include("includes/footer.php"); ?>
-    <?php include("includes/footer-js.php"); ?>    
+    <?php include("includes/footer-js.php"); ?>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
-    <script>        
+    <script>
         $(document).ready(function() {
             $("#sbnform").validate({
                 rules: {
@@ -148,7 +148,7 @@ if ($_POST['btnsubmit']) {
                     }
                 }
             });
-        });      
-    </script>    
+        });
+    </script>
   </body>
 </html>
