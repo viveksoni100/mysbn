@@ -98,8 +98,8 @@ function submitBTNClicked(){
     storingRecordInDB();
     console.log("Your record has been saved.");
     showSuccessAlert();
-    //hideSuccessAlert();
-
+    hideSuccessAlert();
+    
     /*window.location.href="http://localhost/mysbn/dashboard.php?SuccessID=";*/
 
 }//submitBTNClickedEnds
@@ -108,9 +108,10 @@ function showSuccessAlert(){
     $('#myAlert').fadeIn();
 }//showSucessAlertEnds
 
-function hideSuccessAlert(){
+  function hideSuccessAlert(){
     console.log("in hide mode");
-    $(function () {
+    $(function () { 
+      
         var duration = 2000; // 4 seconds
         setTimeout(function () { $('#myAlert').fadeOut(); }, duration);
     });
@@ -397,8 +398,7 @@ function geolocate() {
         <tr>
           <th scope="col"><label>Mobile</label></th>
           <th scope="col"><input type="text" name="mobileNumber" id="mobileNumber" class="form-control" placeholder="Enter your moblie number" minlength="10" maxlength="10" value="<? echo $Mobile ?>" required></th>
-          <th scope="col"><label for="verified" style="color: #155724;;
-">Verified</label></th>
+          <th scope="col"><label for="verified" style="color: #155724;">Verified</label></th>
         </tr>
         <tr>
           <th scope="col"><label>Email</label></th>
