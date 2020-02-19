@@ -98,17 +98,23 @@ function submitBTNClicked(){
     storingRecordInDB();
     console.log("Your record has been saved.");
     showSuccessAlert();
+    hideSuccessAlert();
     
     /*window.location.href="http://localhost/mysbn/dashboard.php?SuccessID=";*/
 
 }//submitBTNClickedEnds
     
 function showSuccessAlert(){
-  if($("#myAlert").find("div#myAlert2").length==0){
-    $("#myAlert").append();
-  }
-  $("#myAlert").css("display", "");
-}
+    $('#myAlert').fadeIn();
+}//showSucessAlertEnds
+    
+function hideSuccessAlert(){
+    console.log("in hide mode");
+    $(function () { 
+        var duration = 2000; // 4 seconds
+        setTimeout(function () { $('#myAlert').fadeOut(); }, duration);
+    });
+}//hideSuccessAlertEnds
 
 function storingRecordInDB(){
 
@@ -189,7 +195,7 @@ function validationCheck(){
 function validateFileToUpload(){
   var file_upload_button = document.getElementById("fileToUpload");
   if(file_upload_button.value == ""){
-    alert("Please select your profile picture");
+    alert("Please select your Profile Pic");
   } else {
     // alert(document.getElementById("uploadForm"));
     document.getElementById("submit").click();
@@ -391,12 +397,14 @@ function geolocate() {
         <tr>
           <th scope="col"><label>Mobile</label></th>
           <th scope="col"><input type="text" name="mobileNumber" id="mobileNumber" class="form-control" placeholder="Enter your moblie number" minlength="10" maxlength="10" value="<? echo $Mobile ?>" required></th>
-          <th scope="col"><label for="verified">Verified</label></th>
+          <th scope="col"><label for="verified" style="color: #5cb85c
+">Verified</label></th>
         </tr>
         <tr>
           <th scope="col"><label>Email</label></th>
           <th scope="col"><input type="text" name="email" id="email" class="form-control" placeholder="Enter your Email address" value="<? echo $Email ?>" required></th>
-          <th scope="col"><label for="forVerification">Click to Verify</label></th>
+          <th scope="col"><label for="forVerification" style="color: #d9534f
+">Click to Verify</label></th>
         </tr>
         <tr>
           <th scope="col"><label>Location</label></th>
@@ -437,11 +445,10 @@ function geolocate() {
         <tr>
           <th scope="col">Occupation</th>
           <th scope="col"> <select name="occupation" id="occupation" style="width: 350px">
-                              <option value="empty"></option>
                               <option value="BusinessOwner">Business Owner</option>
                               <option value="Employee">Employee</option>
                               <option value="Freelancer">Freelancer</option>
-                              <option value="Other">Other</option>
+                              <option value="Other" selected>Other</option>
           </select> </th>
           <th scope="col"></th>
         </tr>
