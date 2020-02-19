@@ -5,9 +5,21 @@ include ("classes/config.inc.php");
 include ("classes/Database.class.php");
 include ("classes/functions.php");
 include ("classes/Session.class.php");
+include ("classes/Password.php");
 $sitesession = new Session();
 $sitesession->Session();
 
+$con = mysqli_connect("127.0.0.1", "root", "", "sbn_db");
+
+$qry_fetch_hash_pass = "SELECT Password FROM `members` WHERE Mobile=".$_POST['Mobile']."";
+
+if ($result = $con->query($qry_fetch_hash_pass)) {
+  while ($row = $result->fetch_row()) {
+        $hashed_password = $row[0];
+  }
+  /*echo "$memberLastName";*/
+  $result->free_result();
+}
 
 if ($_POST['btnsubmit']) {
 
@@ -27,6 +39,12 @@ if ($_POST['btnsubmit']) {
     if ($Error==1) {
         $Error_Message = "Sorry, we have detected issues with your submission.";
     }else {
+        
+    if (password_verify($Password, $hashed_password)) {
+            $Password = $hashed_password;
+        } else {
+            echo "work even harder . . .";
+        }
 
       $chkrsq = $db->query("select * from members where Mobile='".$db->escape($Mobile)."' and Password='".$db->escape($Password)."'");
       if (mysql_num_rows($chkrsq)==0) {
@@ -55,7 +73,7 @@ if ($_POST['btnsubmit']) {
     }
 }
 
-
+$con->close();
 ?>
 <!DOCTYPE html>
 <html lang="en">
