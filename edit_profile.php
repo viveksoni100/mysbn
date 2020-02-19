@@ -344,7 +344,6 @@ function geolocate() {
         <div class="alert alert-success" role="alert" id="myAlert2">
             Success! your details have been saved
         </div>
-
     </div>
     
     <div class="card-header">

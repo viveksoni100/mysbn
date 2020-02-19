@@ -4,9 +4,9 @@ include ("classes/config.inc.php");
 include ("classes/Database.class.php");
 include ("classes/functions.php");
 include ("classes/Session.class.php");
+include ("classes/Password.php");
 $sitesession = new Session();
 $sitesession->Session();
-
 
 if ($_POST['btnsubmit']) {
   
@@ -44,10 +44,12 @@ if ($_POST['btnsubmit']) {
 
         $MobileVerificationCode=rand(1000,9999);
 
+          $hashed_password = password_hash($Password, PASSWORD_DEFAULT);
+          
         $sql = "insert into members set ";
         $sql .= "Mobile='".$db->escape($Mobile)."', ";
         $sql .= "MobileVerificationCode='".$db->escape($MobileVerificationCode)."', ";
-        $sql .= "Password='".$db->escape($Password)."', ";
+        $sql .= "Password='".$db->escape($hashed_password)."', ";
         $sql .= "FirstName='".$db->escape($FirstName)."', ";
         $sql .= "LastName='".$db->escape($LastName)."', ";
         $sql .= "Status='1', ";
