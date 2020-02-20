@@ -39,6 +39,12 @@ if ($_POST['btnsubmit']) {
     if ($Error==1) {
         $Error_Message = "Sorry, we have detected issues with your submission.";
     }else {
+        
+    if (password_verify($Password, $hashed_password)) {
+            $Password = $hashed_password;
+        } else {
+            echo "work even harder . . .";
+        }
 
     if (password_verify($Password, $hashed_password)) {
             $Password = $hashed_password;
