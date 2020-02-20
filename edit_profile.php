@@ -53,11 +53,15 @@ $link->close();
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    
     <style>
         label {
           padding: 8px 0px 0px 0px;
         }
+        .social {height: 25px; width: 25px}
+    
     </style>
+    
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta property="og:description" content="Create your SBN Account for Free!">
@@ -474,32 +478,32 @@ function geolocate() {
       <div class="tab-pane fade" id="nav-si" role="tabpanel" aria-labelledby="nav-si-tab">
           <table class="table"><br><br>
         <tr>
-          <th scope="col"><img src="assets/icons/facebook.png" height="30px" width="30px"></th>
+          <th scope="col" style="padding: 13px 0px 0px 0px"><img src="assets/icons/facebook.png" class="social"></th>
           <th scope="col"><input value="<? echo $Facebook ?>" type="text" name="facebook" id="facebook" class="form-control" placeholder="Enter your facebook id/url"></th>
           <th scope="col"></th>
         </tr>
         <tr>
-          <th scope="col"><img src="assets/icons/twitter.png" height="30px" width="30px"></th>
+          <th scope="col" style="padding: 13px 0px 0px 0px"><img src="assets/icons/twitter.png" class="social"></th>
           <th scope="col"><input value="<? echo $Twitter ?>" type="text" name="twitter" id="twitter" class="form-control" placeholder="Enter your twitter id/url"></th>
           <th scope="col"></th>
         </tr>
         <tr>
-          <th scope="col"><img src="assets/icons/linkedin.png" height="30px" width="30px"></th>
+          <th scope="col" style="padding: 13px 0px 0px 0px"><img src="assets/icons/linkedin.png" class="social"></th>
           <th scope="col"><input value="<? echo $LinkedIn ?>" type="text" name="twitter" id="linkedin" class="form-control" placeholder="Enter your linkedin id/url"></th>
           <th scope="col"></th>
         </tr>
         <tr>
-          <th scope="col"><img src="assets/icons/whatsapp.png" height="30px" width="30px"></th>
+          <th scope="col" style="padding: 13px 0px 0px 0px"><img src="assets/icons/whatsapp.png" class="social"></th>
           <th scope="col"><input value="<? echo $WhatsApp ?>" type="text" name="twitter" id="whatsapp" class="form-control" placeholder="Enter your whatsapp id/url"></th>
           <th scope="col"></th>
         </tr>
         <tr>
-          <th scope="col"><img src="assets/icons/instagram.png" height="30px" width="30px"></th>
+          <th scope="col" style="padding: 13px 0px 0px 0px"><img src="assets/icons/instagram.png" class="social"></th>
           <th scope="col"><input value="<? echo $Instagram ?>" type="text" name="twitter" id="instagram" class="form-control" placeholder="Enter your instagram id/url"></th>
           <th scope="col"></th>
         </tr>
         <tr>
-          <th scope="col"><img src="assets/icons/youtube.png" height="30px" width="30px"></th>
+          <th scope="col" style="padding: 13px 0px 0px 0px"><img src="assets/icons/youtube.png" class="social"></th>
           <th scope="col"><input value="<? echo $Youtube ?>" type="text" name="twitter" id="youtube" class="form-control" placeholder="Enter your youtube id/url"></th>
           <th scope="col"></th>
         </tr>
