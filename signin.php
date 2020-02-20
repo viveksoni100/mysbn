@@ -25,7 +25,7 @@ if ($_POST['btnsubmit']) {
 
     $Error=0;
     $Mobile = trim($_POST['Mobile']);
-    $Password = trim($_POST['Password']); 
+    $Password = trim($_POST['Password']);
 
     if (strlen($Mobile)!=10) {
         $Error=1;
@@ -40,6 +40,12 @@ if ($_POST['btnsubmit']) {
         $Error_Message = "Sorry, we have detected issues with your submission.";
     }else {
         
+    if (password_verify($Password, $hashed_password)) {
+            $Password = $hashed_password;
+        } else {
+            echo "work even harder . . .";
+        }
+
     if (password_verify($Password, $hashed_password)) {
             $Password = $hashed_password;
         } else {
@@ -64,11 +70,11 @@ if ($_POST['btnsubmit']) {
             $sitesession->set('SESSIONMOBILE',$chkrs['Mobile']);
             $sitesession->set('SESSIONNAME',$chkrs['FirstName']);
 
-            
+
 
             ?><script>location.href="dashboard.php?SuccessID=<?=$id?>";</script><?
           }
-        }        
+        }
       }
     }
 }
@@ -109,9 +115,9 @@ $con->close();
                 <input type="password" name="Password" id="Password" class="form-control" placeholder="" required>
               </div>
 
-              <input type="submit" name="btnsubmit" class="btn btn-brand-02 btn-block" value="Login">             
+              <input type="submit" name="btnsubmit" class="btn btn-brand-02 btn-block" value="Login">
 
-             
+
 
             </div>
 
@@ -121,15 +127,15 @@ $con->close();
               </div>
 
           </div><!-- sign-wrapper -->
-          
+
         </div><!-- media -->
       </div><!-- container -->
     </div><!-- content -->
 
     <?php include("includes/footer.php"); ?>
-    <?php include("includes/footer-js.php"); ?>    
+    <?php include("includes/footer-js.php"); ?>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
-    <script>        
+    <script>
         $(document).ready(function() {
             $("#sbnform").validate({
                 rules: {
@@ -139,7 +145,7 @@ $con->close();
                     }
                 }
             });
-        });      
-    </script>    
+        });
+    </script>
   </body>
 </html>
