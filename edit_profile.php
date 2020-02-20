@@ -97,10 +97,11 @@ function submitBTNClicked(){
     console.log("validation are fulfilled...");
     storingRecordInDB();
     console.log("Your record has been saved.");
+    
     showSuccessAlert();
     hideSuccessAlert();
     
-    /*window.location.href="http://localhost/mysbn/dashboard.php?SuccessID=";*/
+    
 
 }//submitBTNClickedEnds
     
@@ -397,14 +398,12 @@ function geolocate() {
         <tr>
           <th scope="col"><label>Mobile</label></th>
           <th scope="col"><input type="text" name="mobileNumber" id="mobileNumber" class="form-control" placeholder="Enter your moblie number" minlength="10" maxlength="10" value="<? echo $Mobile ?>" required></th>
-          <th scope="col"><label for="verified" style="color: #5cb85c
-">Verified</label></th>
+          <th scope="col"><label for="verified" style="color: #5cb85c">Verified</label></th>
         </tr>
         <tr>
           <th scope="col"><label>Email</label></th>
           <th scope="col"><input type="text" name="email" id="email" class="form-control" placeholder="Enter your Email address" value="<? echo $Email ?>" required></th>
-          <th scope="col"><label for="forVerification" style="color: #d9534f
-">Click to Verify</label></th>
+          <th scope="col"><label for="forVerification" style="color: #d9534f">Click to Verify</label></th>
         </tr>
         <tr>
           <th scope="col"><label>Location</label></th>
