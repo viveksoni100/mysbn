@@ -109,6 +109,20 @@ function submitBTNClicked(){
 
 }//submitBTNClickedEnds
 
+function sendMail (e) {
+  e.preventDefault();
+  // alert("PHPMailer/mail.php will be called from here...");
+  $.ajax({
+    type: "GET",
+    url: "PHPMailer/mail.php",
+    success: function (data) {
+      alert("PHPMailer/mail.php called...");
+      $("#clicktoverify").text("Verification link sent");
+    }
+  });
+  return true;
+}
+
 function showSuccessAlert(){
     $('#myAlert').fadeIn();
 }//showSucessAlertEnds
@@ -403,12 +417,12 @@ function geolocate() {
         <tr>
           <th scope="col"><label>Mobile</label></th>
           <th scope="col"><input type="text" name="mobileNumber" id="mobileNumber" class="form-control" placeholder="Enter your moblie number" minlength="10" maxlength="10" value="<? echo $Mobile ?>" required></th>
-          <th scope="col"><label for="verified" style="color: #155724;">Verified</label></th>
+          <th scope="col"><label for="verified">Verified</label></th>
         </tr>
         <tr>
           <th scope="col"><label>Email</label></th>
           <th scope="col"><input type="text" name="email" id="email" class="form-control" placeholder="Enter your Email address" value="<? echo $Email ?>" required></th>
-          <th scope="col"><label for="forVerification"><a href="#" style="color: #721c24">Click to Verify</label></a></th>
+          <th scope="col"><label id="clicktoverify" for="forVerification"><a href="#" onclick="sendMail(event);"style="color: #721c24">Click to Verify</label></a></th>
         </tr>
         <tr>
           <th scope="col"><label>Location</label></th>
