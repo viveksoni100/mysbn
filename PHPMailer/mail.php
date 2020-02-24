@@ -17,11 +17,11 @@ try {
     $mail->Port       = 465;                                    // TCP port to connect to
 
     //Recipients
-    $mail->setFrom('ghanshyampande100@gmail.com', 'Mailer');
+    $mail->setFrom('ghanshyampande100@gmail.com', 'Vivek - Fullstack Developer');
     $mail->addAddress('viveksoni100@gmail.com', 'Joe User');     // Add a recipient
     // Content
     $mail->isHTML(true);                                  // Set email format to HTML
-    $mail->Subject = 'Here is the subject';
+    $mail->Subject = 'Test Mail';
     $mail->Body    = 'This is the HTML message body <b>in bold!</b>';
     $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
 
