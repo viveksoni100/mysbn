@@ -116,7 +116,7 @@ function sendMail (e) {
     type: "GET",
     url: "PHPMailer/mail.php",
     success: function (data) {
-      alert("PHPMailer/mail.php called...");
+      // alert("PHPMailer/mail.php called...");
       $("#clicktoverify").text("Verification link sent");
     }
   });
@@ -422,7 +422,7 @@ function geolocate() {
         <tr>
           <th scope="col"><label>Email</label></th>
           <th scope="col"><input type="text" name="email" id="email" class="form-control" placeholder="Enter your Email address" value="<? echo $Email ?>" required></th>
-          <th scope="col"><label id="clicktoverify" for="forVerification"><a href="#" onclick="sendMail(event);"style="color: #721c24">Click to Verify</label></a></th>
+          <th scope="col"><label id="clicktoverify" for="forVerification"><a href="#" onclick="sendMail(event);"style="color: #F32013">Click to Verify</label></a></th>
         </tr>
         <tr>
           <th scope="col"><label>Location</label></th>
