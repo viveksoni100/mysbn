@@ -53,15 +53,15 @@ $link->close();
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    
+
     <style>
         label {
           padding: 8px 0px 0px 0px;
         }
         .social {height: 25px; width: 25px}
-    
+
     </style>
-    
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta property="og:description" content="Create your SBN Account for Free!">
@@ -101,11 +101,11 @@ function submitBTNClicked(){
     console.log("validation are fulfilled...");
     storingRecordInDB();
     console.log("Your record has been saved.");
-    
+
     showSuccessAlert();
     hideSuccessAlert();
-    
-    
+
+
 
 }//submitBTNClickedEnds
 
@@ -129,8 +129,8 @@ function showSuccessAlert(){
 
   function hideSuccessAlert(){
     console.log("in hide mode");
-    $(function () { 
-      
+    $(function () {
+
         var duration = 2000; // 4 seconds
         setTimeout(function () { $('#myAlert').fadeOut(); }, duration);
     });
@@ -463,10 +463,10 @@ function geolocate() {
         <tr>
           <th scope="col">Occupation</th>
           <th scope="col"> <select name="occupation" id="occupation" style="width: 350px">
-                              <option value="BusinessOwner">Business Owner</option>
-                              <option value="Employee">Employee</option>
-                              <option value="Freelancer">Freelancer</option>
-                              <option value="Other" selected>Other</option>
+            <option value="BusinessOwner" <?php if($Occupation=="BusinessOwner"){?> selected <?php } ?> >Business Owner</option>
+            <option value="Employee" <?php if($Occupation=="Employee"){?> selected <?php } ?> >Employee</option>
+            <option value="Freelancer" <?php if($Occupation=="Freelancer"){?> selected <?php } ?> >Freelancer</option>
+            <option value="Other" <?php if($Occupation=="Other"){?> selected <?php } ?> >Other</option>
           </select> </th>
           <th scope="col"></th>
         </tr>
