@@ -1,7 +1,5 @@
 <?php
 ?>
-
-
 <!doctype html>
 <html lang="en">
   <head>
@@ -30,7 +28,7 @@
       <div class="jumbotron">
         <div class="container">
           <h1 class="display-3">Mobile verification is completed!</h1>
-          <p>You've been successfully signed up to Satsang Business Network, Click here to <a href='http://localhost/mysbn/signin.php'>Login</a></p>
+          <p>You've been successfully signed up to Satsang Business Network, Click here to <a href='http://localhost/mysbn/signin.php' class="btn btn-xs btn-primary flex-fill mg-l-10">Login</a></p>
           <!-- <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p> -->
         </div>
       </div>
