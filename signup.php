@@ -46,12 +46,15 @@ if ($_POST['btnsubmit']) {
 
           $hashed_password = password_hash($Password, PASSWORD_DEFAULT);
 
+          $default_propic_path = "profilepics/Blank.png";
+
         $sql = "insert into members set ";
         $sql .= "Mobile='".$db->escape($Mobile)."', ";
         $sql .= "MobileVerificationCode='".$db->escape($MobileVerificationCode)."', ";
         $sql .= "Password='".$db->escape($hashed_password)."', ";
         $sql .= "FirstName='".$db->escape($FirstName)."', ";
         $sql .= "LastName='".$db->escape($LastName)."', ";
+        $sql .= "Profile_picture_path='".$default_propic_path."', ";
         $sql .= "Status='1', ";
         $sql .= "CreatedOn='".TODAY."', ";
         $sql .= "UpdatedOn='".TODAY."'";
