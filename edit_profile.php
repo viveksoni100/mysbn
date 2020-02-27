@@ -109,14 +109,14 @@ function submitBTNClicked(){
 
 }//submitBTNClickedEnds
 
-function sendMail (e) {
+function sendMail(e) {
   e.preventDefault();
-  // alert("PHPMailer/mail.php will be called from here...");
+  alert("PHPMailer/mail.php will be called from here...");
   $.ajax({
     type: "GET",
     url: "PHPMailer/mail.php",
     success: function (data) {
-      // alert("PHPMailer/mail.php called...");
+      alert("PHPMailer/mail.php called...");
       $("#clicktoverify").text("Verification link sent");
     }
   });
@@ -214,7 +214,9 @@ function validationCheck(){
 
 function validateFileToUpload(){
   var file_upload_button = document.getElementById("fileToUpload");
-  if(file_upload_button.value == ""){
+  if (a) {
+
+  }(file_upload_button.value == ""){
     alert("Please select your Profile Pic");
   } else {
     // alert(document.getElementById("uploadForm"));
@@ -422,7 +424,7 @@ function geolocate() {
         <tr>
           <th scope="col"><label>Email</label></th>
           <th scope="col"><input type="text" name="email" id="email" class="form-control" placeholder="Enter your Email address" value="<? echo $Email ?>" required></th>
-          <th scope="col"><label id="clicktoverify" for="forVerification"><a href="#" onclick="sendMail(event);"style="color: #F32013">Click to Verify</label></a></th>
+          <th scope="col"><label id="clicktoverify" for="forVerification"><a href="#" onclick="sendMail(event);" style="color: #F32013">Click to Verify</label></a></th>
         </tr>
         <tr>
           <th scope="col"><label>Location</label></th>
