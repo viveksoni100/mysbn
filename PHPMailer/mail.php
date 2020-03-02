@@ -5,6 +5,8 @@ require 'PHPMailerAutoload.php';
 // Instantiation and passing `true` enables exceptions
 $mail = new PHPMailer;
 
+$mail_id = $_POST['send_mail_address'];
+
 try {
     //Server settings
     $mail->SMTPDebug = 5;                      // Enable verbose debug output
@@ -18,7 +20,7 @@ try {
 
     //Recipients
     $mail->setFrom('ghanshyampande100@gmail.com', 'Vivek - Fullstack Developer');
-    $mail->addAddress('viveksoni100@gmail.com', 'Joe User');     // Add a recipient
+    $mail->addAddress($mail_id, 'Nobody');     // Add a recipient
     // Content
     $mail->isHTML(true);                                  // Set email format to HTML
     $mail->Subject = 'Test Mail';
