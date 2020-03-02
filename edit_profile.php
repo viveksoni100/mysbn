@@ -114,8 +114,9 @@ function sendMail(e){
   e.preventDefault();
     console.log("PHPMailer/mail.php will be called from here...");
   $.ajax({
-    type: "GET",
+    type: "POST",
     url: "PHPMailer/mail.php",
+    data: {send_mail_address: $('#email').val()},
     success: function (data) {
       console.log("PHPMailer/mail.php called...");
       $("#clicktoverify").text("Verification link sent");
