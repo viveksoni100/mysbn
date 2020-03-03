@@ -216,9 +216,7 @@ function validationCheck(){
 
 function validateFileToUpload(){
   var file_upload_button = document.getElementById("fileToUpload");
-  if (a) {
-
-  }if (file_upload_button.value == ""){
+    if (file_upload_button.value == ""){
     alert("Please select your Profile Pic");
   } else {
     // alert(document.getElementById("uploadForm"));
