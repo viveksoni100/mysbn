@@ -9,7 +9,7 @@ include ("classes/Password.php");
 $sitesession = new Session();
 $sitesession->Session();
 
-$con = mysqli_connect("127.0.0.1", "root", "", "sbn_db");
+$con = mysqli_connect("127.0.0.1","root" ,"BeAJain","sbn_db");
 
 $qry_fetch_hash_pass = "SELECT Password FROM `members` WHERE Mobile=".$_POST['Mobile']."";
 

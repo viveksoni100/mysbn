@@ -1,6 +1,6 @@
 <?php
 
-$conn = mysqli_connect("127.0.0.1", "root", "", "sbn_db");
+$conn = mysqli_connect("127.0.0.1", "root", "BeAJain", "sbn_db");
 
  $FirstName=$_POST['firstName'];
  $LastName=$_POST['lastName'];

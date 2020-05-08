@@ -1,5 +1,5 @@
 <?php
-$conn = mysqli_connect("127.0.0.1", "root", "", "sbn_db");
+$conn = mysqli_connect("127.0.0.1", "root", "BeAJain", "sbn_db");
 if(!$conn){
 //    echo "work harder...";
 }

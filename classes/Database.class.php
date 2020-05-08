@@ -282,6 +282,6 @@ function oops($msg='') {
 
 }//CLASS Database
 ###################################################################################################
-$db = new Database("localhost", "root", "", "sbn_db");
+$db = new Database("localhost", "root", "BeAJain", "sbn_db");
 $db->connect();
 ?>
