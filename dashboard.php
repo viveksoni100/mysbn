@@ -9,7 +9,7 @@ $sitesession = new Session();
 $sitesession->Session();
 
 /*fetching profile picture path*/
-$conn = mysqli_connect("127.0.0.1", "root", "BeAJain", "sbn_db");
+$conn = mysqli_connect(DB_SERVER, DB_USER, DB_PASS, DB_DATABASE);
 
 $query_user_all_data = "SELECT * FROM `members` WHERE Mobile=".$_SESSION['SESSIONMOBILE']."";
 

@@ -6,10 +6,11 @@ include ("classes/Database.class.php");
 include ("classes/functions.php");
 include ("classes/Session.class.php");
 include ("classes/Password.php");
+
 $sitesession = new Session();
 $sitesession->Session();
 
-$con = mysqli_connect("127.0.0.1","root" ,"BeAJain","sbn_db");
+$con = mysqli_connect(DB_SERVER, DB_USER, DB_PASS, DB_DATABASE);
 
 $qry_fetch_hash_pass = "SELECT Password FROM `members` WHERE Mobile=".$_POST['Mobile']."";
 

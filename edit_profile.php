@@ -7,7 +7,7 @@ include ("classes/Session.class.php");
 $sitesession = new Session();
 $sitesession->Session();
 
-$link = mysqli_connect("127.0.0.1", "root", "BeAJain", "sbn_db");
+$link = mysqli_connect(DB_SERVER, DB_USER, DB_PASS, DB_DATABASE);
 
 if (!$link) {
     echo "Error: Unable to connect to MySQL." . PHP_EOL;
